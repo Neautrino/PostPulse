@@ -12,8 +12,30 @@ import { IoMdSend } from "react-icons/io";
 function BlogPage() {
 	const url = window.location.href;
 	const postId = url.split("/")[url.split("/").length - 1];
-	const [post, setPost] = useState({});
-	const [comments, setComments] = useState([]);
+	interface Post {
+	  title: string;
+	  content: string;
+	  upvotes: number;
+	  downvotes: number;
+	  id: number;
+	  comments: Comment[];
+	}
+	
+	interface Comment {
+	  id: number;
+	  author: string;
+	  content: string;
+	}
+	
+	const [post, setPost] = useState<Post>({
+	  title: "",
+	  content: "",
+	  upvotes: 0,
+	  downvotes: 0,
+	  id: 0,
+	  comments: [],
+	});
+	const [comments, setComments] = useState<Comment[]>([]);
 
 	useEffect(() => {
 		const fetchPost = async () => {

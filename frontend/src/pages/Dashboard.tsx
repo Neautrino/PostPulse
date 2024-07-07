@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 function Dashboard() {
-	const [userPosts, setUserPosts] = useState([]);
+	const [userPosts, setUserPosts] = useState<any[]>([]);
 
 	useEffect(() => {
 		const fetchUserPosts = async () => {
