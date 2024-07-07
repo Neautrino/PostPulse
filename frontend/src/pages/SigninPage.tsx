@@ -1,13 +1,11 @@
 import { SigninInput } from "@neautrino/postpulse";
 import axios from "axios";
 import React, { useState, FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 function SignIn() {
-
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
@@ -32,8 +30,6 @@ function SignIn() {
 		}
 
 		try {
-			
-
 			await toast.promise(
 				async () => {
 					const response = await axios.post(
@@ -43,28 +39,33 @@ function SignIn() {
 							password,
 						}
 					);
-		
-					localStorage.setItem("token", response.data.token);					
+
+					localStorage.setItem("token", response.data.token);
 				},
 				{
 					pending: "Getting you in...",
 					success: "Logged in successfully",
-					error: "Failed to log in",
 				}
 			);
 
 			setTimeout(() => navigate("/"), 2000);
-		} catch (error) {
-			toast.error("An error occured please try again.");
+		} catch (error: any) {
+			if (error?.response.status === 401)
+				toast.error("Invalid email or password");
+			else toast.error("An error occured please try again.");
 		}
 	};
 
 	return (
 		<div className="flex h-screen bg-gray-900">
-			<div className="w-1/2 flex items-center justify-center">
-				<h1 className="text-4xl font-bold text-white">
+			<div className="w-1/2 flex flex-col gap-4 items-center justify-center">
+				<h1 className="text-4xl font-bold text-white mb-4">
 					Welcome back to PostPulse
 				</h1>
+				<p className="text-gray-400 text-lg text-center max-w-lg">
+					Your go-to platform for sharing thoughts, connecting with
+					others, and staying updated on the latest trends.
+				</p>
 			</div>
 			<div className="w-1/2 flex items-center justify-center">
 				<form
@@ -103,6 +104,14 @@ function SignIn() {
 					>
 						Sign In
 					</button>
+					<Link to={"/signup"}>
+						<p className="text-gray-300 text-center mt-4">
+							Don't have an account?{" "}
+							<span className="bg-gradient-to-tr font-semibold from-blue-400 to-pink-500 text-transparent bg-clip-text">
+								SignUp
+							</span>
+						</p>
+					</Link>
 				</form>
 			</div>
 			<ToastContainer position="bottom-right" />

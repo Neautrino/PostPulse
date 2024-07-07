@@ -30,6 +30,22 @@ actionRoutes.post("/:id/action", async (c) => {
 
         const post = await prisma.post.findUnique({
             where: { id: postId },
+            include: { author: {
+                select: {
+                    name: true
+                }
+            },
+                comments: {
+                    include: {
+                        author: {
+                            select: {
+                                name: true
+                            }
+                        }
+                    }
+                }
+             },
+
         });
 
         if (!post) {
@@ -41,10 +57,8 @@ actionRoutes.post("/:id/action", async (c) => {
         const userVote = votes[userId];
 
         if (userVote === action) {
-            // User is trying to vote the same way again, so remove their vote
             delete votes[userId];
         } else {
-            // Set or change the user's vote
             votes[userId] = action;
         }
 

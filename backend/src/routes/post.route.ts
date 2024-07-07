@@ -100,6 +100,13 @@ postRoutes.get("/:id", async (c)=>{
 					orderBy: {
 						createdAt: "desc",
 					},
+					include:{
+						author:{
+							select:{
+								name: true,
+							}
+						}
+					}
 				},
 			},
 		});

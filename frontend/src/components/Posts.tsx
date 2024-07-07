@@ -56,7 +56,7 @@ function Posts() {
 				);
 			}
 		} catch (error) {
-			toast.error("Failed to perform action");
+			toast.error("Please login to perform action");
 		}
 	};
 	return (

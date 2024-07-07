@@ -1,20 +1,18 @@
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import Navbar from "../components/Navbar";
 import { userState } from "../utils/atoms";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import { useFetchUser } from "../hooks/useFetchUser";
-import { useNavigate } from "react-router-dom";
 
 function ProfilePage() {
-	const user = useRecoilValue(userState);
+	const [user, setUser] = useRecoilState(userState);
 	const [name, setName] = useState(user.name);
 	const [prevPassword, setPrevPassword] = useState("");
 	const [newPassword, setNewPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const { fetchUser } = useFetchUser();
-	const navigate = useNavigate();
 
 	const handleSave = async () => {
 		try {
@@ -56,6 +54,8 @@ function ProfilePage() {
 							Authorization: `Bearer ${localStorage.getItem("token")}`,
 						}
 					});
+
+					setUser({...user, name})
 					await fetchUser();
 				},	
 				{
@@ -66,14 +66,9 @@ function ProfilePage() {
 			
 		} catch (error) {
 			console.log(error);
-			toast.error("Something went wrong");
+			toast.error("Wrong Password");
 		}
-		finally{
-			setTimeout(()=>{
-					navigate("/");
 
-			}, 1000)
-		}
 	};
 
 	return (

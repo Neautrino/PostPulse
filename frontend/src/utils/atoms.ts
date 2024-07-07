@@ -1,6 +1,6 @@
 import { atom, selector } from "recoil";
 
-interface Comment {
+export interface Comment {
 	id: number;
 	content: string;
 	createdAt: Date;
@@ -11,7 +11,7 @@ interface Comment {
 	author: {name : ""};
 }
 
-interface Post {
+export interface Post {
 	id: number;
 	title: string;
 	content: string;
@@ -87,5 +87,13 @@ export const filteredPostsSelector = selector({
 		return posts.filter((post) =>
 			post.title.toLowerCase().includes(searchQuery.toLowerCase())
 		);
+	},
+});
+
+export const getPostByIdSelector = selector({
+	key: "getPostByIdSelector",
+	get: ({ get }) => (id: number) => {
+		const posts = get(postState);
+		return posts.find((post) => post.id === id);
 	},
 });

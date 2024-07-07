@@ -1,7 +1,7 @@
 import { SignupInput } from '@neautrino/postpulse';
 import axios from 'axios';
 import React, { useState, FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -73,8 +73,13 @@ function SignUp() {
 
   return (
     <div className="flex h-screen bg-gray-900">
-      <div className="w-1/2 flex items-center justify-center">
-        <h1 className="text-4xl font-bold text-white">Welcome to PostPulse</h1>
+      <div className="w-1/2 flex flex-col items-center justify-center gap-4">
+        <h1 className="text-4xl font-bold text-white mb-4 text-center">
+          Welcome to PostPulse
+        </h1>
+        <p className="text-gray-400 text-lg text-center max-w-xl">
+          Join our community and start sharing your thoughts, ideas, and experiences. Connect with like-minded individuals and discover exciting content tailored just for you.
+        </p>
       </div>
       <div className="w-1/2 flex items-center justify-center">
         <form onSubmit={handleSubmit} className="bg-gray-800 p-8 rounded-lg shadow-md w-[350px]">
@@ -98,6 +103,12 @@ function SignUp() {
           >
             Sign Up
           </button>
+          <Link to={'/signin'}>
+						<p className="text-gray-300 text-center mt-4">
+							Already have an account?{" "}
+							<span className="bg-gradient-to-tr font-semibold from-blue-400 to-pink-500 text-transparent bg-clip-text">SignIn</span>
+						</p>
+					</Link>
         </form>
       </div>
       <ToastContainer position="bottom-right" />

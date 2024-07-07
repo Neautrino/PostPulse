@@ -46,7 +46,6 @@ function CreateBlog() {
 					}
 				);
 				if (response.status === 200) {
-					toast.success("Post created successfully");
 					setBlog({ title: "", content: "" });
 					fetchPosts();
 					setTimeout(() => {

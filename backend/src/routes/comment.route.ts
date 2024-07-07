@@ -81,23 +81,13 @@ commentRoutes.post("/:id/comments", async(c)=>{
             include: {
                 author: {
                     select: { name: true }
-                },
-                post: {
-                    select: { title: true }
                 }
             }
         });
 
-        return c.json({
-            msg: "Comment added successfully",
-            comment: {
-                id: comment.id,
-                content: comment.content,
-                authorName: comment.author.name,
-                postTitle: comment.post.title,
-                createdAt: comment.createdAt
-            }
-        });
+        return c.json(
+            {comment, message: "Comment created successfully"}
+        );
     } catch (error) {
         console.error("Error creating comment:", error);
         c.status(500);
