@@ -35,11 +35,13 @@ function Posts() {
 				},
 				{
 					headers: {
-						Authorization: `Bearer ${localStorage.getItem("token")}`,
+						Authorization: `Bearer ${localStorage.getItem(
+							"token"
+						)}`,
 					},
 				}
 			);
-	
+
 			if (response.status === 200) {
 				toast.success("Action successful");
 				// Update the local state to reflect the change
@@ -47,10 +49,10 @@ function Posts() {
 					prevPosts.map((post) =>
 						post.id === postId
 							? {
-								...post,
-								upvotes: response.data.post.upvotes,
-								downvotes: response.data.post.downvotes,
-							}
+									...post,
+									upvotes: response.data.post.upvotes,
+									downvotes: response.data.post.downvotes,
+							  }
 							: post
 					)
 				);
@@ -94,9 +96,11 @@ function Posts() {
 											}}
 										>
 											<div className="flex gap-2 text-center items-center mb-4">
-												<h2 className="text-2xl font-semibold">{`${post.title[0].toUpperCase()}${post.title.slice(
-													1
-												)}`}</h2>
+												<h2 className="text-2xl font-semibold">
+													{post.title.length > 50
+														? `${post.title[0].toUpperCase()}${post.title.slice(1,20)}...`
+														: `${post.title[0].toUpperCase()}${post.title.slice(1)}`}
+												</h2>
 												<span className="text-2xl text-gray-500">
 													.
 												</span>
@@ -108,7 +112,10 @@ function Posts() {
 												</p>
 											</div>
 											<p className="text-md text-gray-300 ">
-												{post.content}
+												{post.content.length > 200
+													? post.content.slice(0, 200)
+													: post.content}
+												...
 											</p>
 										</div>
 										<div className="mt-8 flex justify-between w-full gap-8">
@@ -175,7 +182,7 @@ function Posts() {
 					</ul>
 				)}
 			</div>
-			<ToastContainer  position="bottom-right"  />
+			<ToastContainer position="bottom-right" />
 		</div>
 	);
 }

@@ -93,34 +93,16 @@ function BlogPage() {
 	
 
 	return (
-		<div className="h-auto bg-gray-900">
+		<div className="h-full bg-gray-900">
 			<Navbar />
-			<div className="max-w-5xl py-10 mx-auto">
+			<div className="max-w-5xl min-h-screen py-10 mx-auto">
 				<div className=" rounded-lg p-10 bg-gray-700 mb-4 rounded-bl-none rounded-br-none	">
 					<h1 className="text-4xl text-gray-200  font-semibold text-center underline">
 						{post.title}
 					</h1>
-					<p className="text-xl text-gray-400 mt-10 mx-6">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Delectus nemo in iste consectetur quasi dolor placeat
-						maiores qui sint nesciunt animi fuga ipsa aspernatur,
-						tenetur voluptates sunt harum illo est labore numquam
-						ducimus explicabo pariatur! Ad incidunt possimus,
-						officiis temporibus eius nam expedita, dolorem ullam
-						nisi, id dicta mollitia ipsum.
-					</p>
-					<p className="text-xl text-gray-400 mt-10 mx-6">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Delectus nemo in iste consectetur quasi dolor placeat
-						maiores qui sint nesciunt animi fuga ipsa aspernatur,
-						tenetur voluptates sunt harum illo est labore numquam
-						ducimus explicabo pariatur! Ad incidunt possimus,
-						officiis temporibus eius nam expedita, dolorem ullam
-						nisi, id dicta mollitia ipsum.
-					</p>
-					<p className="text-xl text-gray-400 mt-10 mx-6">
-						{post.content}
-					</p>
+					<p className="text-xl text-gray-400 mt-10 mx-6" style={{ whiteSpace: 'pre-wrap' }}>
+  {post.content.replace(/\n/g, '\n\n')}
+</p>
 				</div>
 				<div className="bg-gray-700 w-full gap-8 px-10 py-2  rounded-lg rounded-tl-none rounded-tr-none text-white">
 					{/* buttons section */}
