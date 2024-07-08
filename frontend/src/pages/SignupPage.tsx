@@ -87,7 +87,7 @@ function SignUp() {
           {['email', 'username', 'password', 'confirmPassword'].map((field) => (
             <div key={field} className="mb-4">
               <input
-                type={field.includes('password') ? 'password' : field === 'email' ? 'email' : 'text'}
+                type={field.toLowerCase().includes('password') ? 'password' : field === 'email' ? 'email' : 'text'}
                 name={field}
                 placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
                 value={formData[field as keyof typeof formData]}

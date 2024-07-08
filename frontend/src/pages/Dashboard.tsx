@@ -67,7 +67,7 @@ function Dashboard() {
 					<h1 className="font-serif text-gray-300 text-5xl text-center font-semibold ml-10 font-md border-b border-gray-400 pb-6">
 						Dashboard
 					</h1>
-          <ToastContainer />
+          <ToastContainer  position="bottom-right"  />
 					<div className="p-10">
 						<h1 className="text-2xl font-serif">
 							Your Posts ({userPosts.length})

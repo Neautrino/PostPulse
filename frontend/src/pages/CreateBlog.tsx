@@ -123,7 +123,7 @@ function CreateBlog() {
 					</form>
 				</div>
 			</div>
-			<ToastContainer />
+			<ToastContainer  position="bottom-right"  />
 		</div>
 	);
 }

@@ -169,9 +169,9 @@ function ProfilePage() {
 							</button>
 						</div>
 					</form>
+					<ToastContainer position="bottom-right"  />	
 				</div>
 			</div>
-			<ToastContainer />
 		</div>
 	);
 }

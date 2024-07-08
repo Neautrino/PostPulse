@@ -186,7 +186,7 @@ function BlogPage() {
 						 )} 
 					</div>
 				</div>
-				<ToastContainer />
+				<ToastContainer  position="bottom-right"  />
 			</div>
 		</div>
 	);

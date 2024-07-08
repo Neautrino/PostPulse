@@ -175,7 +175,7 @@ function Posts() {
 					</ul>
 				)}
 			</div>
-			<ToastContainer />
+			<ToastContainer  position="bottom-right"  />
 		</div>
 	);
 }
