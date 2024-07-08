@@ -54,6 +54,9 @@ postRoutes.get("/", async (c)=>{
 
 	try {
 		const posts = await prisma.post.findMany({
+			where: {
+				deleted: false,
+			},
 			orderBy: {
 				createdAt: "desc",
 			},

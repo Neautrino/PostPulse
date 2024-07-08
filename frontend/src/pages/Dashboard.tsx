@@ -3,9 +3,12 @@ import Navbar from "../components/Navbar";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { useSetRecoilState } from "recoil";
+import { postState } from "../utils/atoms";
 
 function Dashboard() {
 	const [userPosts, setUserPosts] = useState<any[]>([]);
+	const setPosts = useSetRecoilState(postState);
 
 	useEffect(() => {
 		const fetchUserPosts = async () => {
@@ -49,6 +52,15 @@ function Dashboard() {
                       : post
               )
           );
+
+		  setPosts((prevPosts) =>
+			  prevPosts.map((post) =>
+				  post.id === postId
+					  ? { ...post, deleted: true }
+					  : post
+			  )
+		  );
+		  
           toast.success('Post deleted successfully');
       } else {
           toast.error('Failed to delete post');
