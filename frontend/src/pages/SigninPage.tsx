@@ -57,8 +57,8 @@ function SignIn() {
 	};
 
 	return (
-		<div className="flex h-screen bg-gray-900">
-			<div className="w-1/2 flex flex-col gap-4 items-center justify-center">
+		<div className="flex flex-col lg:flex-row justify-center items-center h-screen bg-gray-900">
+			<div className="hidden w-1/2 lg:flex flex-col gap-4 items-center justify-center">
 				<h1 className="text-4xl font-bold text-white mb-4">
 					Welcome back to PostPulse
 				</h1>

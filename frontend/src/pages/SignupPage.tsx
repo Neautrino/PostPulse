@@ -72,8 +72,8 @@ function SignUp() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-900">
-      <div className="w-1/2 flex flex-col items-center justify-center gap-4">
+    <div className="flex flex-col lg:flex-row h-screen justify-center items-center bg-gray-900">
+      <div className="w-1/2 hidden lg:flex flex-col items-center justify-center gap-4">
         <h1 className="text-4xl font-bold text-white mb-4 text-center">
           Welcome to PostPulse
         </h1>
