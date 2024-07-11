@@ -76,7 +76,7 @@ function ProfilePage() {
 			<Navbar />
 			<div className="bg-gray-700 h-screen">
 				<div className="w-full max-w-7xl mx-auto p-10 text-white">
-					<h1 className="text-gray-300 text-5xl text-center font-semibold ml-10 font-">
+					<h1 className="text-gray-300 text-4xl mb-6 lg:text-5xl text-center font-semibold ml-10 font-">
 						Your Profile
 					</h1>
 					<form className="space-y-6 max-w-3xl mx-auto">
